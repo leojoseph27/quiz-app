@@ -70,7 +70,7 @@ MCQ-Generator/
 
 1. **📥 Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/MCQ-Generator.git
+   https://github.com/leojoseph27/quiz-app.git
    cd MCQ-Generator
    ```
 
