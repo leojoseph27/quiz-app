@@ -64,7 +64,7 @@
     </div>
 
     <script>
-        // Theme toggle functionality
+        
         function toggleTheme() {
             const body = document.body;
             const icon = document.querySelector('.theme-toggle i');
@@ -82,14 +82,14 @@
             }
         }
 
-        // Check for saved theme preference
+        
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.setAttribute('data-theme', 'dark');
             document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Difficulty selector functionality
+        
         const difficultyBtns = document.querySelectorAll('.difficulty-btn');
         const difficultyInput = document.querySelector('input[name="difficulty"]');
 
@@ -108,27 +108,27 @@
             const topicInput = document.querySelector('input[name="topic"]');
             const numQuestions = document.getElementById('num_questions').value;
             
-            // Check if neither file nor topic is provided
+            
             if (!fileInput.files.length && !topicInput.value.trim()) {
                 showNotification('Enter Input to Generate Quiz', 'error');
                 return;
             }
             
-            // Check if number of questions is valid
+            
             if (!numQuestions || numQuestions < 1) {
                 showNotification('Please enter a valid number of questions', 'error');
                 return;
             }
             
-            // Show loading notification
+            
             showNotification('Generating Quiz...', 'info');
             
-            // If validation passes, submit the form
+            
             event.target.submit();
         }
 
         function showNotification(message, type = 'info') {
-            // Remove any existing notifications
+            
             const existingNotifications = document.querySelectorAll('.notification');
             existingNotifications.forEach(notification => notification.remove());
             
@@ -138,13 +138,13 @@
             
             document.body.appendChild(notification);
             
-            // Remove notification after 3 seconds
+            
             setTimeout(() => {
                 notification.remove();
             }, 3000);
         }
 
-        // File upload functionality
+        
         function updateFileName(input) {
             const fileName = input.files[0]?.name;
             if (fileName) {
@@ -152,13 +152,13 @@
                 const fileNameSpan = document.querySelector('.file-name');
                 const uploadBtn = input.nextElementSibling;
                 
-                // Show the file name container
+                
                 fileContainer.style.display = 'flex';
                 
-                // Update the file name
+                
                 fileNameSpan.textContent = fileName;
                 
-                // Update the upload button text
+                
                 uploadBtn.innerHTML = `<i class="fas fa-file"></i> ${fileName}`;
                 showNotification('File uploaded successfully', 'success');
             }
@@ -169,13 +169,13 @@
             const fileContainer = document.querySelector('.file-name-container');
             const uploadBtn = fileInput.nextElementSibling;
             
-            // Clear the file input
+            
             fileInput.value = '';
             
-            // Hide the file name container
+            
             fileContainer.style.display = 'none';
             
-            // Reset the upload button text
+            
             uploadBtn.innerHTML = '<i class="fas fa-upload"></i> Upload File';
             
             showNotification('File removed', 'info');
