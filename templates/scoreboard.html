@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <!-- Explanation Modal -->
+    
     <div class="modal" id="explanationModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -92,7 +92,7 @@
     </div>
 
     <script>
-        // Explanation Modal functionality
+        
         document.querySelectorAll('.explanation-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const explanation = this.getAttribute('data-explanation');
@@ -108,7 +108,7 @@
             modal.style.display = 'none';
         }
 
-        // Close modal when clicking outside
+        
         window.onclick = function(event) {
             const modal = document.getElementById('explanationModal');
             if (event.target === modal) {
@@ -116,7 +116,7 @@
             }
         }
 
-        // Theme toggle functionality
+        
         function toggleTheme() {
             const body = document.body;
             const icon = document.querySelector('.theme-toggle i');
@@ -134,19 +134,19 @@
             }
         }
 
-        // Check for saved theme preference
+        
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.setAttribute('data-theme', 'dark');
             document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Function to download notes
+        
         function downloadNotes() {
-            // Show loading notification
+            
             showNotification('Generating notes...', 'info');
             
-            // Generate and download notes
+            
             fetch('/generate_notes', {
                 method: 'POST',
                 headers: {
@@ -156,9 +156,9 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success' && data.notes_path) {
-                    // Show download started notification
+                    
                     showNotification('Download Started', 'success');
-                    // Trigger the download
+                    
                     window.location.href = `/download/${data.notes_path}`;
                 } else {
                     showNotification(data.error || 'Error generating notes. Please try again.', 'error');
@@ -170,9 +170,9 @@
             });
         }
 
-        // Function to show notifications
+        
         function showNotification(message, type = 'info') {
-            // Remove any existing notifications
+            
             const existingNotifications = document.querySelectorAll('.notification');
             existingNotifications.forEach(notification => notification.remove());
             
@@ -182,7 +182,7 @@
             
             document.body.appendChild(notification);
             
-            // Remove notification after 3 seconds
+            
             setTimeout(() => {
                 notification.remove();
             }, 3000);
