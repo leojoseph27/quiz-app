@@ -1,4 +1,4 @@
-// Timer functionality
+
 let timers = {};
 let timerStates = {};
 
@@ -6,7 +6,7 @@ function startTimer(questionId, duration) {
     const timerElement = document.querySelector(`#timer-${questionId}`);
     if (!timerElement) return;
 
-    // Initialize timer state if not exists
+    
     if (!timerStates[questionId]) {
         timerStates[questionId] = {
             timeLeft: duration,
@@ -16,7 +16,7 @@ function startTimer(questionId, duration) {
         };
     }
 
-    // If timer is expired, don't start it
+    
     if (timerStates[questionId].isExpired) {
         timerElement.classList.add('expired');
         timerElement.textContent = 'Time\'s Up!';
@@ -24,19 +24,19 @@ function startTimer(questionId, duration) {
         return;
     }
 
-    // If timer is paused, resume from last paused time
+    
     if (timerStates[questionId].isPaused) {
         const timeSincePause = Date.now() - timerStates[questionId].lastPausedTime;
         timerStates[questionId].timeLeft = Math.max(0, timerStates[questionId].timeLeft - Math.floor(timeSincePause / 1000));
         timerStates[questionId].isPaused = false;
     }
 
-    // Clear existing timer if any
+    
     if (timers[questionId]) {
         clearInterval(timers[questionId]);
     }
 
-    // Start new timer
+    
     timers[questionId] = setInterval(() => {
         if (!timerStates[questionId].isPaused) {
             timerStates[questionId].timeLeft--;
@@ -90,7 +90,7 @@ function disableQuestion(questionId) {
     }
 }
 
-// Update navigation functions to handle timers
+
 function nextQuestion() {
     const currentQuestion = document.querySelector('.question.active');
     if (currentQuestion) {
@@ -125,18 +125,18 @@ function previousQuestion() {
     }
 }
 
-// Initialize timers for all questions
+
 function initializeTimers() {
     const questions = document.querySelectorAll('.question');
     questions.forEach(question => {
         const questionId = question.id.split('-')[1];
         const timerElement = question.querySelector('.question-timer');
         if (timerElement) {
-            const duration = parseInt(timerElement.dataset.duration) || 300; // Default 5 minutes
+            const duration = parseInt(timerElement.dataset.duration) || 300; 
             startTimer(questionId, duration);
         }
     });
 }
 
-// Call initializeTimers when the page loads
+
 document.addEventListener('DOMContentLoaded', initializeTimers); 
