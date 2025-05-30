@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <!-- Review Modal -->
+    
     <div class="modal" id="reviewModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -131,7 +131,7 @@
         </div>
     </div>
 
-    <!-- Explanation Modal -->
+    
     <div class="modal" id="explanationModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -147,7 +147,7 @@
     </div>
 
     <script>
-        // Theme toggle functionality
+        
         function toggleTheme() {
             const body = document.body;
             const icon = document.querySelector('.theme-toggle i');
@@ -165,14 +165,14 @@
             }
         }
 
-        // Check for saved theme preference
+        
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.setAttribute('data-theme', 'dark');
             document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Quiz navigation and timer
+        
         const questions = document.querySelectorAll('.question');
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
@@ -184,9 +184,9 @@
         let skippedQuestions = new Set();
         let bookmarkedQuestions = new Set();
 
-        // Timer functionality
+        
         const totalQuestions = {{ questions|length }};
-        const timePerQuestion = 30; // 30 seconds per question
+        const timePerQuestion = 30; 
         let totalTimeLeft = totalQuestions * timePerQuestion;
         let quizTimer;
 
@@ -195,10 +195,10 @@
             const seconds = totalTimeLeft % 60;
             totalTimer.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
             
-            // Vibrate when in last minute
+            
             if (minutes === 0 && seconds > 0) {
                 if (navigator.vibrate) {
-                    navigator.vibrate(200); // Vibrate for 200ms
+                    navigator.vibrate(200); 
                 }
             }
             
@@ -226,14 +226,14 @@
             questions.forEach(q => q.style.display = 'none');
             questions[index].style.display = 'block';
             
-            // Update progress bar
+            
             const progress = ((index + 1) / questions.length) * 100;
             progressBar.style.width = `${progress}%`;
             
-            // Update navigation buttons
+            
             prevBtn.disabled = index === 0;
             
-            // Show/hide next button and review button based on question index
+            
             if (index === questions.length - 1) {
                 nextBtn.style.display = 'none';
                 reviewBtn.style.display = 'block';
@@ -245,7 +245,7 @@
             
             submitBtn.style.display = 'none';
 
-            // Update bookmark button state
+            
             const bookmarkBtn = questions[index].querySelector('.bookmark-btn');
             if (bookmarkBtn) {
                 const icon = bookmarkBtn.querySelector('i');
@@ -265,7 +265,7 @@
                 icon.className = 'fas fa-bookmark';
             }
             
-            // Update status in review modal
+            
             const statusBookmarked = document.getElementById(`status-bookmarked-${index}`);
             if (statusBookmarked) {
                 statusBookmarked.style.display = bookmarkedQuestions.has(index) ? 'block' : 'none';
@@ -275,13 +275,13 @@
         function skipQuestion(index) {
             skippedQuestions.add(index);
             
-            // Update status in review modal
+            
             const statusSkipped = document.getElementById(`status-skipped-${index}`);
             if (statusSkipped) {
                 statusSkipped.style.display = 'block';
             }
             
-            // Move to next question if available
+            
             if (index < questions.length - 1) {
                 currentQuestion = index + 1;
                 showQuestion(currentQuestion);
@@ -302,9 +302,9 @@
             }
         });
 
-        // Review Modal functionality
+        
         function updateAnswer(questionIndex, option) {
-            // Update the main quiz form
+            
             const mainRadio = document.querySelector(`input[name="question_${questionIndex}"]`);
             if (mainRadio) {
                 mainRadio.value = option;
@@ -316,13 +316,13 @@
             const modal = document.getElementById('reviewModal');
             modal.style.display = 'flex';
             
-            // Set current answers in review modal
+            
             questions.forEach((question, index) => {
                 const selectedRadio = question.querySelector('input[type="radio"]:checked');
                 if (selectedRadio) {
                     const selectedOption = selectedRadio.value;
                     
-                    // Find and check the corresponding radio in the review modal
+                    
                     const reviewRadio = document.querySelector(`input[name="review_question_${index}"][value="${selectedOption}"]`);
                     if (reviewRadio) {
                         reviewRadio.checked = true;
@@ -330,7 +330,7 @@
                 }
             });
 
-            // Show submit button in review modal
+            
             const submitBtn = document.querySelector('.modal-footer .nav-btn:last-child');
             submitBtn.style.display = 'block';
         }
@@ -340,7 +340,7 @@
             modal.style.display = 'none';
         }
 
-        // Explanation Modal functionality
+        
         function showExplanation(explanation) {
             const modal = document.getElementById('explanationModal');
             const content = document.getElementById('explanationContent');
@@ -353,7 +353,7 @@
             modal.style.display = 'none';
         }
 
-        // Update the window click handler to handle both modals
+        
         window.onclick = function(event) {
             const reviewModal = document.getElementById('reviewModal');
             const explanationModal = document.getElementById('explanationModal');
@@ -364,7 +364,7 @@
             }
         }
 
-        // Initialize quiz
+        
         showQuestion(0);
         startQuizTimer();
 </script>
