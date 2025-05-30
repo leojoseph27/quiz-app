@@ -8,10 +8,10 @@ from fpdf import FPDF
 from dotenv import load_dotenv
 import time
 
-# Load environment variables from .env file
+
 load_dotenv()
 
-# Configure Google API
+
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 if not GOOGLE_API_KEY:
     raise ValueError("GOOGLE_API_KEY not found in environment variables")
@@ -23,9 +23,9 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 app.config['RESULTS_FOLDER'] = 'results/'
 app.config['ALLOWED_EXTENSIONS'] = {'pdf', 'txt', 'doc', 'docx'}
-app.secret_key = os.getenv('FLASK_SECRET_KEY', 'your_secret_key')  # Use environment variable with fallback
+app.secret_key = os.getenv('FLASK_SECRET_KEY', 'your_secret_key')  
 
-# Ensure folders exist
+
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['RESULTS_FOLDER'], exist_ok=True)
 
@@ -35,7 +35,7 @@ def allowed_file(filename):
 def extract_text_from_file(file_path):
     ext = file_path.rsplit('.', 1)[1].lower()
     try:
-        print(f"Attempting to extract text from {file_path} with extension {ext}")  # Debug log
+        print(f"Attempting to extract text from {file_path} with extension {ext}")  
         if ext == 'pdf':
             with pdfplumber.open(file_path) as pdf:
                 text = ''
@@ -43,25 +43,25 @@ def extract_text_from_file(file_path):
                     page_text = page.extract_text()
                     if page_text:
                         text += page_text + '\n'
-                print(f"Successfully extracted {len(text)} characters from PDF")  # Debug log
+                print(f"Successfully extracted {len(text)} characters from PDF")  
                 return text
-        elif ext in ['doc', 'docx']:  # Handle both .doc and .docx
+        elif ext in ['doc', 'docx']:  
             try:
-                # Ensure the file exists and is readable
+                
                 if not os.path.exists(file_path):
-                    print(f"Word file not found at path: {file_path}")  # Debug log
+                    print(f"Word file not found at path: {file_path}")  
                     return None
                 
-                # Try to open the document
+                
                 doc = docx.Document(file_path)
                 text = ''
                 
-                # Extract text from paragraphs
+                
                 for para in doc.paragraphs:
-                    if para.text.strip():  # Only add non-empty paragraphs
+                    if para.text.strip():  
                         text += para.text + '\n'
                 
-                # Extract text from tables if present
+                
                 for table in doc.tables:
                     for row in table.rows:
                         for cell in row.cells:
@@ -69,21 +69,21 @@ def extract_text_from_file(file_path):
                                 text += cell.text + '\n'
                 
                 if not text.strip():
-                    print("No text content found in Word file")  # Debug log
+                    print("No text content found in Word file")  
                     return None
                     
-                print(f"Successfully extracted {len(text)} characters from Word file")  # Debug log
+                print(f"Successfully extracted {len(text)} characters from Word file")  
                 return text
             except Exception as doc_error:
-                print(f"Error processing Word file: {str(doc_error)}")  # Debug log
+                print(f"Error processing Word file: {str(doc_error)}")  
                 return None
         elif ext == 'txt':
             with open(file_path, 'r', encoding='utf-8') as file:
                 text = file.read()
-                print(f"Successfully extracted {len(text)} characters from TXT")  # Debug log
+                print(f"Successfully extracted {len(text)} characters from TXT")  
                 return text
     except Exception as e:
-        print(f"Error extracting text from {file_path}: {str(e)}")  # Debug log
+        print(f"Error extracting text from {file_path}: {str(e)}")  
         return None
 
 def generate_mcqs(input_data, num_questions, difficulty="easy", is_file=False):
@@ -122,7 +122,7 @@ def generate_mcqs(input_data, num_questions, difficulty="easy", is_file=False):
         
         Ensure each question has exactly 4 options and one correct answer.
         """
-    else:  # topic_only scenario
+    else:  
         prompt = f"""
         Generate {num_questions} multiple-choice questions from the following topic:
         {input_data['content']}
@@ -160,101 +160,101 @@ def generate_mcqs(input_data, num_questions, difficulty="easy", is_file=False):
 
 @app.route('/')
 def index():
-    # Only clear session if explicitly requested
+    
     if request.args.get('clear') == 'true':
         session.clear()
     return render_template('index.html')
 
 @app.route('/home')
 def home():
-    # Clear session when home button is clicked
+    
     session.clear()
     return redirect(url_for('index'))
 
 @app.route('/generate', methods=['POST'])
 def generate():
-    # Clear previous quiz data when starting a new quiz
+    
     session.clear()
     
     file = request.files.get('file')
     topic = request.form.get('topic')
     difficulty = request.form.get('difficulty', 'easy')
 
-    print(f"File received: {file}")  # Debug log
-    print(f"Topic received: {topic}")  # Debug log
-    print(f"Request files: {request.files}")  # Debug log
-    print(f"Request form: {request.form}")  # Debug log
+    print(f"File received: {file}")  
+    print(f"Topic received: {topic}")  
+    print(f"Request files: {request.files}")  
+    print(f"Request form: {request.form}")  
 
     try:
         num_questions = int(request.form['num_questions'])
-        print(f"Generating {num_questions} questions")  # Debug log
+        print(f"Generating {num_questions} questions")  
     except ValueError:
         return "Please enter a valid number of questions."
 
-    # Scenario 1: Topic input only
+    
     if not file and topic:
-        print("Processing topic input only")  # Debug log
+        print("Processing topic input only")  
         input_data = {
             'content': topic,
             'is_file': False
         }
     
-    # Scenario 2: File upload only
+    
     elif file and allowed_file(file.filename):
-        print("Processing file upload only")  # Debug log
+        print("Processing file upload only")  
         try:
-            # Create a unique filename to prevent overwriting
+            
             filename = secure_filename(file.filename)
             timestamp = str(int(time.time()))
             unique_filename = f"{timestamp}_{filename}"
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
-            print(f"Saving file to: {file_path}")  # Debug log
+            print(f"Saving file to: {file_path}")  
             
-            # Ensure the upload folder exists
+            
             os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
             
-            # Save the file
-            file.save(file_path)
-            print(f"File saved successfully")  # Debug log
             
-            # Extract text from the file
+            file.save(file_path)
+            print(f"File saved successfully")  
+            
+            
             file_content = extract_text_from_file(file_path)
             if not file_content:
-                print("Failed to extract text from file")  # Debug log
-                # Clean up the file if text extraction failed
+                print("Failed to extract text from file")  
+                
                 try:
                     os.remove(file_path)
                 except:
                     pass
                 return "Error: Could not extract text from the uploaded file. Please try again."
             
-            print(f"Extracted text length: {len(file_content)}")  # Debug log
+            print(f"Extracted text length: {len(file_content)}")  
             
             input_data = {
                 'content': file_content,
                 'is_file': True
             }
             
-            # Store the file path in session for later use
+            
             session['current_file'] = file_path
             
         except Exception as e:
-            print(f"Error processing file: {str(e)}")  # Debug log
+            print(f"Error processing file: {str(e)}")  
             return f"Error processing file: {str(e)}"
     
     else:
-        print(f"Invalid input: file={file}, topic={topic}")  # Debug log
+        print(f"Invalid input: file={file}, topic={topic}")  
         return "Please provide either a file or a topic."
 
-    # Generate MCQs based on the input data
+    
     mcqs = generate_mcqs(input_data, num_questions, difficulty)
     if not mcqs:
-        print("Failed to generate MCQs")  # Debug log
+        print("Failed to generate MCQs")  
         return "Failed to generate MCQs. Please try again."
 
-    print(f"Generated MCQs: {mcqs[:200]}...")  # Debug log (first 200 chars)
+    print(f"Generated MCQs: {mcqs[:200]}...")  
 
-    # Process the generated MCQs
+    
     questions = []
     for mcq in mcqs.split("## MCQ"):
         if not mcq.strip():
@@ -266,26 +266,26 @@ def generate():
 
         question = lines[0].replace("Question:", "").strip()
         options = [
-            lines[1][3:].strip(),  # A) option
-            lines[2][3:].strip(),  # B) option
-            lines[3][3:].strip(),  # C) option
-            lines[4][3:].strip()   # D) option
+            lines[1][3:].strip(),  
+            lines[2][3:].strip(),  
+            lines[3][3:].strip(),  
+            lines[4][3:].strip()   
         ]
         correct_answer = lines[5].replace("Correct Answer:", "").strip()
 
         questions.append({
             'question': question,
             'options': options,
-            'correct_answer': options[ord(correct_answer.upper()) - 65]  # Convert A,B,C,D to index
+            'correct_answer': options[ord(correct_answer.upper()) - 65]  
         })
 
-    print(f"Processed {len(questions)} questions")  # Debug log
+    print(f"Processed {len(questions)} questions")  
 
     if not questions:
-        print("No valid questions generated")  # Debug log
+        print("No valid questions generated")  
         return "No valid questions could be generated. Please try again."
 
-    # Store the necessary data in session
+    
     session['questions'] = questions
     
     if input_data['is_file']:
@@ -307,7 +307,7 @@ def quiz():
 
             for i, q in enumerate(questions):
                 user_answer = request.form.get(f"question_{i}")
-                if not user_answer:  # Handle case where no answer was selected
+                if not user_answer:  
                     user_answer = "No answer selected"
                 
                 correct = user_answer == q['correct_answer']
@@ -315,7 +315,7 @@ def quiz():
                 if correct:
                     score += 1
 
-                # Generate explanation for the question
+                
                 prompt = f"""
                 Explain why '{q['correct_answer']}' is the correct answer to:
                 '{q['question']}'
@@ -326,7 +326,7 @@ def quiz():
                     response = model.generate_content(prompt)
                     explanation = response.text
                 except Exception as e:
-                    print(f"Error generating explanation: {str(e)}")  # Debug log
+                    print(f"Error generating explanation: {str(e)}")  
                     explanation = "Explanation not available."
 
                 user_answers.append({
@@ -338,18 +338,18 @@ def quiz():
                     'explanation': explanation
                 })
 
-            # Store user answers in session
+            
             session['user_answers'] = user_answers
             session['score'] = score
             session['total'] = len(questions)
             
-            # Create PDF with results
+            
             create_pdf(user_answers, score, len(questions))
             
-            # Calculate percentage
+            
             percentage = (score / len(questions) * 100) if len(questions) > 0 else 0
             
-            # Render scoreboard directly instead of redirecting
+            
             return render_template('scoreboard.html',
                                  user_answers=user_answers,
                                  score=score,
@@ -359,7 +359,7 @@ def quiz():
                                  enumerate=enumerate)
                                  
         except Exception as e:
-            print(f"Error processing quiz submission: {str(e)}")  # Debug log
+            print(f"Error processing quiz submission: {str(e)}")  
             return redirect(url_for('index'))
 
     return render_template('quiz.html', questions=questions, enumerate=enumerate)
@@ -367,21 +367,21 @@ def quiz():
 @app.route('/scoreboard')
 def scoreboard():
     try:
-        # Get data from session instead of request args
+        
         score = session.get('score', 0)
         total = session.get('total', 0)
         user_answers = session.get('user_answers', [])
         
-        # Handle case when there are no questions
+        
         if not user_answers or total == 0:
             return redirect(url_for('index'))
         
-        # Calculate percentage safely
+        
         percentage = (score / total * 100) if total > 0 else 0
         
-        # Generate notes automatically when scoreboard is opened
+        
         try:
-            # Create a more focused prompt for study notes
+            
             prompt = f"""
             Create comprehensive study notes based on the following quiz content:
 
@@ -422,19 +422,19 @@ def scoreboard():
             response = model.generate_content(prompt)
             notes_content = response.text
             
-            # Create PDF with better formatting
+            
             pdf = FPDF()
             pdf.add_page()
             
-            # Title
+            
             pdf.set_font("Arial", "B", 16)
             pdf.cell(200, 10, txt="Study Notes", ln=1, align='C')
             pdf.ln(10)
             
-            # Content
+            
             pdf.set_font("Arial", "", 12)
             
-            # Split content into sections and format
+            
             sections = notes_content.split('\n\n')
             for section in sections:
                 lines = section.split('\n')
@@ -442,29 +442,29 @@ def scoreboard():
                     line = line.strip()
                     if not line:
                         pdf.ln(5)
-                    elif line.endswith(':'):  # Heading
+                    elif line.endswith(':'):  
                         pdf.set_font('Arial', 'B', 12)
                         pdf.cell(0, 10, txt=line, ln=1)
                         pdf.set_font('Arial', '', 12)
-                    elif line.startswith('•'):  # Bullet point
+                    elif line.startswith('•'):  
                         pdf.set_x(10)
                         pdf.multi_cell(0, 10, txt=line[1:].strip())
                     else:
                         pdf.multi_cell(0, 10, txt=line)
                 pdf.ln(5)
             
-            # Save the PDF with a unique name based on timestamp
+            
             timestamp = str(int(time.time()))
             notes_filename = f'study_notes_{timestamp}.pdf'
             notes_path = os.path.join(app.config['RESULTS_FOLDER'], notes_filename)
             pdf.output(notes_path)
             
-            # Store the filename in session
+            
             session['current_notes_file'] = notes_filename
-            print(f"Notes generated successfully: {notes_filename}")  # Debug log
+            print(f"Notes generated successfully: {notes_filename}")  
             
         except Exception as e:
-            print(f"Error generating notes: {str(e)}")  # Debug log
+            print(f"Error generating notes: {str(e)}")  
             session['current_notes_file'] = None
         
         return render_template('scoreboard.html', 
@@ -475,7 +475,7 @@ def scoreboard():
                              chr=chr,
                              enumerate=enumerate)
     except Exception as e:
-        print(f"Error in scoreboard: {str(e)}")  # Debug log
+        print(f"Error in scoreboard: {str(e)}")  
         return redirect(url_for('index'))
 
 @app.route('/get_reasoning', methods=['POST'])
@@ -506,7 +506,7 @@ def get_reasoning():
 @app.route('/generate_notes', methods=['POST'])
 def generate_notes():
     try:
-        # Get user answers from session
+        
         user_answers = session.get('user_answers', [])
         if not user_answers:
             return jsonify({
@@ -514,8 +514,8 @@ def generate_notes():
                 'error': 'No quiz data available.'
             }), 400
 
-        # Generate notes content
-        # Create the questions text with proper line breaks
+        
+        
         questions_text = ""
         for q in user_answers:
             questions_text += f"Q: {q['question']}\n"
@@ -562,19 +562,19 @@ def generate_notes():
         response = model.generate_content(prompt)
         notes_content = response.text
         
-        # Create PDF with better formatting
+        
         pdf = FPDF()
         pdf.add_page()
         
-        # Title
+        
         pdf.set_font("Arial", "B", 16)
         pdf.cell(200, 10, txt="Study Notes", ln=1, align='C')
         pdf.ln(10)
         
-        # Content
+        
         pdf.set_font("Arial", "", 12)
         
-        # Split content into sections and format
+        
         sections = notes_content.split('\n\n')
         for section in sections:
             lines = section.split('\n')
@@ -582,18 +582,18 @@ def generate_notes():
                 line = line.strip()
                 if not line:
                     pdf.ln(5)
-                elif line.endswith(':'):  # Heading
+                elif line.endswith(':'):  
                     pdf.set_font('Arial', 'B', 12)
                     pdf.cell(0, 10, txt=line, ln=1)
                     pdf.set_font('Arial', '', 12)
-                elif line.startswith('•'):  # Bullet point
+                elif line.startswith('•'):  
                     pdf.set_x(10)
                     pdf.multi_cell(0, 10, txt=line[1:].strip())
                 else:
                     pdf.multi_cell(0, 10, txt=line)
             pdf.ln(5)
         
-        # Save the PDF with a unique name based on timestamp
+        
         timestamp = str(int(time.time()))
         notes_filename = f'study_notes_{timestamp}.pdf'
         notes_path = os.path.join(app.config['RESULTS_FOLDER'], notes_filename)
@@ -605,7 +605,7 @@ def generate_notes():
         })
         
     except Exception as e:
-        print(f"Error generating notes: {str(e)}")  # Debug log
+        print(f"Error generating notes: {str(e)}")  
         return jsonify({
             'status': 'error',
             'error': str(e)
@@ -615,19 +615,19 @@ def create_pdf(user_answers, score, total):
     pdf = FPDF()
     pdf.add_page()
     
-    # Use Helvetica font with Unicode support
+    
     pdf.set_font("Helvetica", size=12)
 
-    # Add score
+    
     pdf.cell(0, 10, f"Score: {score}/{total}", ln=True)
     pdf.ln(10)
 
-    # Add questions and answers
+    
     for ans in user_answers:
-        # Question
+        
         pdf.multi_cell(0, 10, f"Q: {ans['question']}")
         
-        # Options
+        
         for i, option in enumerate(ans['options']):
             status = ""
             if option == ans['correct_answer']:
@@ -646,16 +646,16 @@ def create_pdf(user_answers, score, total):
 def download_file(filename):
     try:
         file_path = os.path.join(app.config['RESULTS_FOLDER'], filename)
-        print(f"Attempting to download file: {file_path}")  # Debug log
+        print(f"Attempting to download file: {file_path}")  
         
         if not os.path.exists(file_path):
-            print(f"File not found at: {file_path}")  # Debug log
+            print(f"File not found at: {file_path}")  
             return "File not found", 404
             
-        print(f"File found, sending download")  # Debug log
+        print(f"File found, sending download")  
         return send_file(file_path, as_attachment=True)
     except Exception as e:
-        print(f"Error downloading file: {str(e)}")  # Debug log
+        print(f"Error downloading file: {str(e)}")  
         return str(e), 500
 
 if __name__ == "__main__":
