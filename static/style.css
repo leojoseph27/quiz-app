@@ -1,13 +1,13 @@
 :root {
-    /* Light mode colors */
-    --primary-color: #9932CC;  /* Dark Orchid */
-    --primary-hover-color: #8A2BE2;  /* Blue Violet */
-    --secondary-color: #8B008B;  /* Dark Magenta */
-    --accent-color: #BA55D3;  /* Medium Orchid */
-    --background-color: #F8F0FF;  /* Light purple tint */
+    
+    --primary-color: #9932CC;  
+    --primary-hover-color: #8A2BE2;  
+    --secondary-color: #8B008B;  
+    --accent-color: #BA55D3;  
+    --background-color: #F8F0FF; 
     --card-bg: #ffffff;
     --text-color: #2d3748;
-    --border-color: #E6E6FA;  /* Lavender */
+    --border-color: #E6E6FA;  
     --shadow-color: rgba(153, 50, 204, 0.1);
     --success-color: #4CAF50;
     --error-color: #F44336;
@@ -15,14 +15,14 @@
 }
 
 [data-theme="dark"] {
-    --primary-color: #8A2BE2;  /* Blue Violet */
-    --primary-hover-color: #9932CC;  /* Dark Orchid */
-    --secondary-color: #4B0082;  /* Indigo */
-    --accent-color: #BA55D3;  /* Medium Orchid */
-    --background-color: #1A1A2E;  /* Dark navy */
-    --card-bg: #2D2D44;  /* Darker purple */
-    --text-color: #E6E6FA;  /* Lavender */
-    --border-color: #4B0082;  /* Indigo */
+    --primary-color: #8A2BE2;  
+    --primary-hover-color: #9932CC;  
+    --secondary-color: #4B0082;  
+    --accent-color: #BA55D3;  
+    --background-color: #1A1A2E;  
+    --card-bg: #2D2D44;  
+    --text-color: #E6E6FA;  
+    --border-color: #4B0082;  
     --shadow-color: rgba(138, 43, 226, 0.1);
     --success-color: #4CAF50;
     --error-color: #F44336;
@@ -43,7 +43,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Base container styles */
+
 .container {
     max-width: 1200px;
     padding: 2rem 1rem;
@@ -55,7 +55,7 @@ body {
     align-items: center;
 }
 
-/* Header Styles */
+
 .header {
     background-color: var(--primary-color);
     padding: 1rem;
@@ -147,7 +147,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1001; /* Ensure button is clickable */
+    z-index: 1001; 
 }
 
 .home-btn:hover {
@@ -177,7 +177,7 @@ body {
     background-color: var(--primary-hover-color);
 }
 
-/* Form container styles */
+
 .form-container {
     background-color: var(--secondary-color);
     padding: 2.5rem;
@@ -193,7 +193,7 @@ body {
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;  /* Reduced from 1.5rem to 1.2rem (20% reduction) */
+    gap: 1.2rem;  
     margin-bottom: 2rem;
     max-width: 500px;
     margin-left: auto;
@@ -201,7 +201,7 @@ body {
 }
 
 .input-container {
-    margin-top: 8%;  /* Increased from 4% to 8% for more space */
+    margin-top: 8%;  
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -224,13 +224,13 @@ body {
     color: var(--text-color);
     transition: all 0.3s ease;
     text-align: center;
-    box-sizing: border-box;  /* Ensure padding is included in width */
+    box-sizing: border-box; 
 }
 
 .input-container input::placeholder {
-    text-align: center;  /* Center the placeholder text */
+    text-align: center;  
     color: var(--text-color);
-    opacity: 0.7;  /* Make placeholder slightly transparent */
+    opacity: 0.7;  
 }
 
 .input-container input:focus {
@@ -241,9 +241,9 @@ body {
 
 .upload-container {
     width: 100%;
-    max-width: 550px;  /* Match the input container width */
+    max-width: 550px;  
     margin: 0 auto;
-    margin-top: 0.70%;  /* Set exact 0.9% gap */
+    margin-top: 0.70%;  
 }
 
 .upload-container input[type="file"] {
@@ -275,7 +275,7 @@ body {
     flex-shrink: 0;
 }
 
-/* File name display styles */
+
 .file-name-container {
     display: flex;
     align-items: center;
@@ -315,7 +315,7 @@ body {
     color: #d32f2f;
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 768px) {
     .file-name-container {
         padding: 0.7rem 0.8rem;
@@ -426,7 +426,7 @@ body {
     background-color: var(--primary-hover-color);
 }
 
-/* Quiz Styles */
+
 .quiz-container {
     background-color: var(--secondary-color);
     padding: 2rem;
@@ -501,7 +501,7 @@ body {
 .question-text {
     font-size: 1.2rem;
     color: var(--text-color);
-    margin-bottom: 1%; /* Reduced from 7% to 1% */
+    margin-bottom: 1%; 
 }
 
 .options {
@@ -509,7 +509,7 @@ body {
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 2rem;
-    padding-top: 1%; /* Reduced from 3% to 1% */
+    padding-top: 1%; 
 }
 
 .option {
@@ -556,7 +556,7 @@ body {
     color: white;
 }
 
-/* Update Scoreboard Styles */
+
 .option.correct-answer {
     background-color: #e8f5e9;
     border-color: #2e7d32;
@@ -583,7 +583,7 @@ body {
     color: var(--text-color);
 }
 
-/* Dark mode specific updates */
+
 [data-theme="dark"] .option.correct-answer {
     background-color: rgba(46, 125, 50, 0.2);
 }
@@ -600,7 +600,7 @@ body {
     color: #e57373;
 }
 
-/* Scoreboard Styles */
+
 .scoreboard {
     background-color: var(--secondary-color);
     padding: 2rem;
@@ -617,7 +617,7 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Results Styles */
+
 .result-item {
     background-color: white;
     padding: 1.5rem;
@@ -733,7 +733,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem; /* Increased gap between button rows */
+    gap: 2.5rem; 
     margin-top: 2.5rem;
     max-width: 800px;
     margin-left: auto;
@@ -742,7 +742,7 @@ body {
 
 .actions-row {
     display: flex;
-    gap: 7%; /* 7% horizontal gap between buttons */
+    gap: 7%; 
     justify-content: center;
     width: 100%;
 }
@@ -750,7 +750,7 @@ body {
 .action-button {
     background-color: var(--primary-color);
     color: white;
-    padding: 10% 2rem 1rem 2rem; /* Added 10% padding to top */
+    padding: 10% 2rem 1rem 2rem; 
     border: none;
     border-radius: 25px;
     font-size: 1.1rem;
@@ -762,17 +762,17 @@ body {
     text-decoration: none;
     width: fit-content;
     white-space: nowrap;
-    margin: 0.5rem 0; /* Added margin to prevent overlap */
+    margin: 0.5rem 0; 
 }
 
 .action-button:hover {
     background-color: var(--primary-hover-color);
 }
 
-/* Responsive Layout */
+
 @media screen and (max-width: 768px) {
     .actions {
-        gap: 2rem; /* Slightly reduced for tablet */
+        gap: 2rem; 
     }
 
     .actions-row {
@@ -780,25 +780,25 @@ body {
     }
 
     .action-button {
-        padding: 8% 1.5rem 0.8rem 1.5rem; /* Slightly reduced for tablet */
+        padding: 8% 1.5rem 0.8rem 1.5rem; 
         font-size: 1rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .actions {
-        gap: 1.8rem; /* Further reduced for mobile */
+        gap: 1.8rem; 
     }
 
     .actions-row {
         flex-direction: column;
-        gap: 1.2rem; /* Increased gap for mobile */
+        gap: 1.2rem; 
     }
 
     .action-button {
-        padding: 6% 1.2rem 0.7rem 1.2rem; /* Further reduced for mobile */
+        padding: 6% 1.2rem 0.7rem 1.2rem; 
         font-size: 0.95rem;
-        margin: 0.3rem 0; /* Adjusted margin for mobile */
+        margin: 0.3rem 0; 
     }
 }
 
@@ -815,7 +815,7 @@ body {
     font-style: italic;
 }
 
-/* Tablet view */
+
 @media screen and (max-width: 768px) {
     .container {
         padding: 1rem;
@@ -926,7 +926,7 @@ body {
         padding: 0.8rem;
     }
 
-    /* Review Modal Responsive Styles */
+    
     .modal-content {
         width: 95%;
         margin: 1rem;
@@ -977,7 +977,7 @@ body {
     }
 }
 
-/* Mobile view */
+
 @media screen and (max-width: 480px) {
     .container {
         padding: 0.8rem;
@@ -1038,7 +1038,7 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Review Modal for Small Screens */
+    
     .modal-content {
         margin: 0.5rem;
     }
@@ -1092,7 +1092,7 @@ body {
     }
 }
 
-/* Landscape Mode */
+
 @media screen and (max-height: 600px) and (orientation: landscape) {
     .modal-content {
         max-height: 95vh;
@@ -1108,9 +1108,9 @@ body {
     }
 }
 
-/* Theme Toggle */
+
 .theme-toggle {
-    position: static;  /* Remove fixed positioning */
+    position: static;  
     background-color: var(--primary-color);
     border: none;
     border-radius: 50%;
@@ -1131,7 +1131,7 @@ body {
     background-color: var(--primary-hover-color);
 }
 
-/* Score Display */
+
 .score-container {
     display: flex;
     justify-content: center;
@@ -1152,7 +1152,7 @@ body {
     opacity: 0.8;
 }
 
-/* Difficulty Selector */
+
 .difficulty-selector {
     display: flex;
     gap: 1rem;
@@ -1180,7 +1180,7 @@ body {
     color: white;
 }
 
-/* Update existing styles for dark mode */
+
 .form-container,
 .quiz-container,
 .scoreboard,
@@ -1197,7 +1197,7 @@ body {
     border-color: var(--border-color);
 }
 
-/* Review Modal Styles */
+
 .modal {
     display: none;
     position: fixed;
@@ -1300,7 +1300,7 @@ body {
     gap: 1rem;
 }
 
-/* Dark mode specific updates for modal */
+
 [data-theme="dark"] .modal-content {
     background-color: var(--card-bg);
 }
@@ -1323,7 +1323,7 @@ body {
     background-color: var(--primary-hover-color);
 }
 
-/* Question Navigation and Status */
+
 .progress-info {
     display: flex;
     justify-content: space-between;
@@ -1379,7 +1379,7 @@ body {
     background-color: var(--warning-hover-color);
 }
 
-/* Question Status Indicators */
+
 .question-status {
     display: flex;
     gap: 1rem;
@@ -1411,7 +1411,7 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Mobile Optimizations */
+
 @media screen and (max-width: 768px) {
     .progress-info {
         flex-direction: column;
@@ -1451,7 +1451,7 @@ body {
         gap: 0.5rem;
     }
 
-    /* Touch-friendly improvements */
+    
     .option {
         padding: 1rem;
         margin: 0.5rem 0;
@@ -1471,7 +1471,7 @@ body {
         min-height: 44px;
     }
 
-    /* Improved spacing for mobile */
+    
     .question {
         padding: 1.5rem;
     }
@@ -1484,7 +1484,7 @@ body {
         margin: 1.5rem 0;
     }
 
-    /* Review modal mobile optimizations */
+    
     .modal-content {
         margin: 0.5rem;
         max-height: 95vh;
@@ -1500,7 +1500,7 @@ body {
     }
 }
 
-/* Small Mobile Devices */
+
 @media screen and (max-width: 480px) {
     .progress-info {
         font-size: 0.8rem;
@@ -1533,7 +1533,7 @@ body {
     }
 }
 
-/* Landscape Mode Optimizations */
+
 @media screen and (max-height: 600px) and (orientation: landscape) {
     .nav-buttons {
         flex-direction: row;
@@ -1555,7 +1555,7 @@ body {
     }
 }
 
-/* Quiz Navigation */
+
 .quiz-navigation {
     display: flex;
     justify-content: space-between;
@@ -1587,7 +1587,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Question Actions */
+
 .question-actions {
     display: flex;
     justify-content: space-between;
@@ -1617,7 +1617,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* Mobile Responsive Updates */
+
 @media screen and (max-width: 768px) {
     .header h1 {
         font-size: 1.5rem;
@@ -1655,7 +1655,7 @@ body {
     }
 }
 
-/* Generate Quiz Button */
+
 .submit-btn {
     background-color: var(--primary-color);
     color: white;
@@ -1675,7 +1675,7 @@ body {
     background-color: var(--primary-hover-color);
 }
 
-/* Prevent horizontal scrolling */
+
 html, body {
     overflow-x: hidden;
     width: 100%;
@@ -1685,21 +1685,21 @@ html, body {
     align-items: center;
 }
 
-/* Ensure content fits within viewport */
+
 .container {
     width: 100%;
     max-width: 100vw;
     overflow-x: hidden;
 }
 
-/* Fix any potential horizontal overflow issues */
+
 .form-container {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
 }
 
-/* Fix padding issues */
+
 @media screen and (max-width: 768px) {
     .container {
         padding-left: 1rem;
@@ -1724,12 +1724,12 @@ html, body {
     }
 }
 
-/* Action Buttons */
+
 .actions {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem; /* Increased gap between button rows */
+    gap: 2.5rem; 
     margin-top: 2.5rem;
     max-width: 800px;
     margin-left: auto;
@@ -1738,7 +1738,7 @@ html, body {
 
 .actions-row {
     display: flex;
-    gap: 7%; /* 7% horizontal gap between buttons */
+    gap: 7%; 
     justify-content: center;
     width: 100%;
 }
@@ -1746,7 +1746,7 @@ html, body {
 .action-button {
     background-color: var(--primary-color);
     color: white;
-    padding: 10% 2rem 1rem 2rem; /* Added 10% padding to top */
+    padding: 10% 2rem 1rem 2rem; 
     border: none;
     border-radius: 25px;
     font-size: 1.1rem;
@@ -1758,17 +1758,17 @@ html, body {
     text-decoration: none;
     width: fit-content;
     white-space: nowrap;
-    margin: 0.5rem 0; /* Added margin to prevent overlap */
+    margin: 0.5rem 0; 
 }
 
 .action-button:hover {
     background-color: var(--primary-hover-color);
 }
 
-/* Responsive Layout */
+
 @media screen and (max-width: 768px) {
     .actions {
-        gap: 2rem; /* Slightly reduced for tablet */
+        gap: 2rem; 
     }
 
     .actions-row {
@@ -1776,29 +1776,29 @@ html, body {
     }
 
     .action-button {
-        padding: 8% 1.5rem 0.8rem 1.5rem; /* Slightly reduced for tablet */
+        padding: 8% 1.5rem 0.8rem 1.5rem; 
         font-size: 1rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .actions {
-        gap: 1.8rem; /* Further reduced for mobile */
+        gap: 1.8rem; 
     }
 
     .actions-row {
         flex-direction: column;
-        gap: 1.2rem; /* Increased gap for mobile */
+        gap: 1.2rem; 
     }
 
     .action-button {
-        padding: 6% 1.2rem 0.7rem 1.2rem; /* Further reduced for mobile */
+        padding: 6% 1.2rem 0.7rem 1.2rem; 
         font-size: 0.95rem;
-        margin: 0.3rem 0; /* Adjusted margin for mobile */
+        margin: 0.3rem 0; 
     }
 }
 
-/* Landscape Mode */
+
 @media screen and (orientation: landscape) and (min-height: 600px) {
     .actions {
         flex-direction: row;
@@ -1812,7 +1812,7 @@ html, body {
     }
 }
 
-/* Portrait Mode */
+
 @media screen and (orientation: portrait) {
     .actions {
         flex-direction: column;
@@ -1827,7 +1827,7 @@ html, body {
     }
 }
 
-/* Ensure content stays centered */
+
 html, body {
     overflow-x: hidden;
     width: 100%;
@@ -1837,7 +1837,7 @@ html, body {
     align-items: center;
 }
 
-/* Center all content */
+
 .container, 
 .form-container,
 .input-group,
@@ -1962,7 +1962,7 @@ html, body {
     font-weight: 500;
 }
 
-/* Remove the old color styles since we're using background colors now */
+
 .user-answer.correct,
 .user-answer.incorrect,
 .correct-answer {
@@ -2014,7 +2014,7 @@ html, body {
     color: white;
 }
 
-/* Dark theme adjustments */
+
 [data-theme="dark"] .option-item {
     background-color: #2a2a2a;
 }
@@ -2027,7 +2027,7 @@ html, body {
     background-color: #3a1b1b;
 }
 
-/* Notification Styles */
+
 .notification {
     position: fixed;
     top: 20px;
@@ -2075,57 +2075,57 @@ html, body {
     }
 }
 
-/* Ensure proper spacing on mobile */
+
 @media (max-width: 768px) {
     .input-container,
     .upload-container {
-        margin-top: 5%;  /* Reduced from 12% to 5% for mobile */
+        margin-top: 5%;  
         padding: 0 0.5rem;
         width: 100%;
         max-width: 100%;
     }
 
     .input-container input {
-        padding: 0.9rem 1rem;  /* Adjusted padding for mobile */
-        font-size: 1rem;  /* Slightly smaller font size for mobile */
+        padding: 0.9rem 1rem;  
+        font-size: 1rem; 
     }
 }
 
 @media (max-width: 480px) {
     .input-container,
     .upload-container {
-        margin-top: 3%;  /* Reduced from 15% to 3% for smaller screens */
+        margin-top: 3%;  
         padding: 0 0.3rem;
     }
 
     .input-container input {
-        padding: 0.8rem 0.8rem;  /* Further adjust padding */
-        font-size: 0.95rem;  /* Slightly smaller font size */
+        padding: 0.8rem 0.8rem;  
+        font-size: 0.95rem;  
     }
 }
 
-/* Mobile Responsive Adjustments */
+
 @media screen and (max-width: 768px) {
     .input-container {
-        padding: 0 0.5rem;  /* Reduce padding on mobile */
-        width: 100%;  /* Full width */
-        max-width: 100%;  /* Allow full width on mobile */
+        padding: 0 0.5rem;  
+        width: 100%;  
+        max-width: 100%;  
     }
 
     .input-container input {
-        padding: 0.9rem 1rem;  /* Adjust padding for mobile */
-        font-size: 1rem;  /* Slightly smaller font size */
-        width: 100%;  /* Ensure full width */
+        padding: 0.9rem 1rem;  
+        font-size: 1rem;  
+        width: 100%;  
     }
 }
 
 @media screen and (max-width: 480px) {
     .input-container {
-        padding: 0 0.3rem;  /* Further reduce padding for smaller screens */
+        padding: 0 0.3rem;  
     }
 
     .input-container input {
-        padding: 0.8rem 0.8rem;  /* Further adjust padding */
-        font-size: 0.95rem;  /* Slightly smaller font size */
+        padding: 0.8rem 0.8rem;  
+        font-size: 0.95rem;  
     }
 } 
