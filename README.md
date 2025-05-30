@@ -110,8 +110,8 @@ MCQ-Generator/
 - Werkzeug 🛠️ – File Management
 
 ### 🎨 Frontend
-- HTML5 📘 – Page Structure  
-- CSS3 🎨 – Styling & Themes  
+- HTML 📘 – Page Structure  
+- CSS 🎨 – Styling & Themes  
 - JavaScript ⚡ – Interactivity  
 - Font Awesome 🎯 – Icons
 
