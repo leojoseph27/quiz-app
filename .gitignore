@@ -1,7 +1,7 @@
-# Environment variables
+
 .env
 
-# Python
+
 __pycache__/
 *.py[cod]
 *$py.class
@@ -24,17 +24,17 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual Environment
+
 venv/
 ENV/
 
-# IDE
+
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# Project specific
+
 uploads/
 results/
 *.pdf
