@@ -1,0 +1,58 @@
+{
+  "questions": [
+    {
+      "question": "Which of the following is a common color for an apple?",
+      "options": [
+        "Blue",
+        "Orange",
+        "Green",
+        "Purple"
+      ],
+      "correct_answer": "Green"
+    },
+    {
+      "question": "What part of the apple contains the seeds?",
+      "options": [
+        "The skin",
+        "The core",
+        "The stem",
+        "The flesh"
+      ],
+      "correct_answer": "The core"
+    },
+    {
+      "question": "Which of these is a popular type of apple often used for baking?",
+      "options": [
+        "Granny Smith",
+        "Banana",
+        "Grapefruit",
+        "Lemon"
+      ],
+      "correct_answer": "Granny Smith"
+    },
+    {
+      "question": "An apple tree produces what kind of fruit?",
+      "options": [
+        "Citrus Fruit",
+        "Berry",
+        "Pome Fruit",
+        "Stone Fruit"
+      ],
+      "correct_answer": "Pome Fruit"
+    },
+    {
+      "question": "What is the process called when apples are harvested from the tree?",
+      "options": [
+        "Planting",
+        "Growing",
+        "Picking",
+        "Watering"
+      ],
+      "correct_answer": "Picking"
+    }
+  ],
+  "original_input_text": null,
+  "difficulty": "easy",
+  "num_questions": 5,
+  "generated_at": 1764398346.4906616
+}

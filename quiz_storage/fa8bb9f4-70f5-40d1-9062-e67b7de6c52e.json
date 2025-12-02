@@ -1,0 +1,58 @@
+{
+  "questions": [
+    {
+      "question": "According to Leo Joseph Perumpully's resume, what is his specialization within Computer Science and Engineering?",
+      "options": [
+        "Data Structures and Algorithms",
+        "Artificial Intelligence",
+        "Software Engineering",
+        "Network Security"
+      ],
+      "correct_answer": "Artificial Intelligence"
+    },
+    {
+      "question": "Which of the following programming languages is NOT explicitly listed under Leo Joseph Perumpully's technical skills?",
+      "options": [
+        "Python",
+        "Java",
+        "C++",
+        "JavaScript"
+      ],
+      "correct_answer": "C++"
+    },
+    {
+      "question": "What type of project did Leo Joseph Perumpully develop using Google GenAI and Flask during his AI Internship?",
+      "options": [
+        "A mobile game",
+        "An AI Quiz Generator",
+        "A social media platform",
+        "A cybersecurity tool"
+      ],
+      "correct_answer": "An AI Quiz Generator"
+    },
+    {
+      "question": "Which of the following is NOT listed as an area of interest for Leo Joseph Perumpully?",
+      "options": [
+        "Artificial Intelligence & Machine Learning",
+        "Generative AI & NLP",
+        "Quantum Computing",
+        "Healthcare AI Systems"
+      ],
+      "correct_answer": "Quantum Computing"
+    },
+    {
+      "question": "During which period did Leo Joseph Perumpully work as a Full Stack Developer at QB Tech Solutions?",
+      "options": [
+        "Jan-Mar 2025",
+        "May-Jul 2024",
+        "Oct 2025 - Present",
+        "Dec 2021- Jul 2025"
+      ],
+      "correct_answer": "Oct 2025 - Present"
+    }
+  ],
+  "original_input_text": "Leo Joseph Perumpully\nComputer Science Engineer\nI’m passionate about exploring new ideas and solving real-world prob-\nlems through technology. I enjoy working with others, learning con-\ntinuously, and using my skills to make a meaningful impact through\nresearch and innovation.\nEDUCATION\nCONTACT\nB.TECH (Honors) IN COMPUTER SCIENCE AND ENGINEERING –\n(cid:72)Phone\nSPECIALIZATION IN ARTIFICIAL INTELLIGENCE\n+919567767488\nDec2021–Jul2025\n(cid:64)Email Karunya Institute of Technology and Sciences, Tamil Nadu, India\nleojoseph975@gmail.com CGPA: 7.92\nDOB HIGHER SECONDARY EDUCATION\nJune18,2003 Jun2019-Jul2021\nGood Shepherd Public School and Junior College, Kerala, India\nPassportNumber\nCBSE – 86.4%\nU2392582\nNationality SECONDARY EDUCATION\nIndian Jun2018-May2019\nUnited Indian School, Kuwait\nAddress\nCBSE – 83%\nPerumpullyHouse,Chalakudy\nThrissur,Kerala680307,India\nEXPERIENCE\nLinkedin\nlinkedin.com/in/leo-joseph\nFULL STACK DEVELOPER – QB Tech Solutions - Kerala, India\nGithub Oct2025–Present\ngithub.com/leojoseph27\n• Developed React-based software with PostgreSQL backend for\ninternal operations.\nLANGUAGES\n• Built an AI chatbot using Node.js and deployed the company web-\nsite.\n• English\n• Provide technical support and resolve system and connectivity\n• Tamil\nissues.\n• Hindi\n• Malayalam AI INTERN – Workcohol Solutions Pvt. Ltd. - Chennai, India\nJan–Mar2025\nAREA OF INTEREST\n• Developed AI Quiz Generator using Google GenAI and Flask.\n• Handled prompt engineering, model integration, and frontend logic.\n• Artificial Intelligence &\nMachine Learning\nAI & WEB DEV INTERN – British Link Kuwait (BLK) - Kuwait\n• Data Science & Analytics\nMay–Jul2024\n• Generative AI & NLP\n• Built a tailored custom chatbot for company QA using generative\n• Healthcare AI Systems\nAI.\n• Computer Vision\n• Contributed to website updates and hardware maintenance.\n• Research & Innovation\n• Environmental Technology &\nRESEARCH PUBLICATIONS\nSustainability\n1. AquaNutri: A Mobile Platform for Skin-Based Deficiency Detection\nand Nutrient-Rich Fish Recommendation (Published)\nPublisher: Provincia Journal\nwww.provinciajournal.com/1934\n2. CardioAI: AI-Assisted Cardiovascular Health Prediction with Anom-\naly Detection and Disease Classification (Submitted)\nPublisher: Bentham Science Publishers\nCONFERENCES\nACHIEVEMENTS\n1. Event: International Conference on Advancements in Generat-\n• Finalist – Smart India\nive AI, IIOT, and Quantum Computing for Sustainable Development\nHackathon Internal Round\n(AGAIQCSD-2024) – Aquanutri: A mobile application for terrace-based\n• Best presenter at SERB fish cultivation to combat nutritional deficiencies (Oral Presentation)\nsponsored International\nConference AGAIQCSD-2024 CERTIFICATIONS\n• Top 10 Finalist (Kerala-Tamil\nnadu) – SSN iFound Startup • Microsoft: Azure, AI Fundamentals, Security Compliance and\nChallenge Identity Fundamentals\n• Head – Design Team at • Cisco: Python Essentials, Ethical Hacking, Introduction to Packet\nMindKraft Tech Fest Tracer\n• Completed Google Cloud • Google: Cybersecurity, Data Analytics, Project Management Spe-\nEnthusiast study Jam cializations\n• Meta: Android Development\nTECHNICAL SKILLS\n• IBM:GenAIforNLPLanguageUnderstanding,GettingStartedwith\n• Python, SQL, PostgreSQL, Enterprise-Grade AI\nHTML, CSS, JavaScript, Java\n• Machine Learning & PROJECTS\nGenerative AI (Google GenAI,\nHugging Face, LangChain) 1. AI Quiz Generator (2025)\n• Flask & Full-Stack Web • A Flask-based web app that uses Google Generative AI to create\nDevelopment MCQs based on selected difficulty levels\n• Natural Language Processing • Provides instant results, explanations, and personalized study ma-\n(NLP) terials for effective learning and evaluation\n• Prompt Engineering & Model\n2. Heart Condition Analyzer (CardioAI) (2025)\nIntegration\n• Cloud Computing (AWS, • An AI-integrated healthcare system using ECG, heart sounds, and\nAzure) clinical data to detect cardiovascular anomalies\n• Cybersecurity Basics (Cisco • Assesses risk, classifies conditions, and triggers emergency re-\nCertified) sponses\n• Enables timely, personalized, and proactive cardiac care\nSOFT SKILLS\n3. Data-Driven Dermatology (2024)\n• Project Management\n• An AI-powered skin image analysis tool that detects dermatological\n• Team Player\nconditions\n• Conflict Resolution\n• Identifies nutrient deficiencies by examining skin features\n• Analytical Thinking\n• Helpsusersunderstandtheirhealthbetterandreceivepersonalized\n• Problem Solving\ndeficiency reports\nCLUBS AND ROLES 4. Fish Recommender System (2024)\n• A recommendation engine that analyzes users’ nutritional deficien-\n• Coordinator – Nature Club\ncies\n(2022-23)\n• Suggests suitable fish varieties rich in the required nutrients\n• Coordinator – Journalism Club\n(2023-24) • Promotes dietary balance and improves overall health through\nsustainable food solutions\nREFERENCES\n5. Mental Health Chatbot (2024)\nDr. M. Rajeswari, M.Tech., Ph.D\n• An intelligent chatbot that identifies emotional patterns from user\nAssociate Professor\nconversations based on Reddit data\nDepartment of Computer Science\n• Detects mental health concerns and offers personalized support\nand Engineering\n• Provides coping strategies and wellness recommendations through\nrajeswari@karunya.edu\nempathetic dialogue\nDr. M. Mythily, M.E., Ph.D 6. Food Sentiment Analysis (2023)\nAssistant Professor\n• A sentiment analysis tool using NLP to classify food reviews and\nDepartment of Computer Science\ndetect fake ones, enhancing credibility across online food platforms.\nand Engineering\nmythily@karunya.edu\n",
+  "difficulty": "easy",
+  "num_questions": 5,
+  "generated_at": 1764674678.0655594
+}

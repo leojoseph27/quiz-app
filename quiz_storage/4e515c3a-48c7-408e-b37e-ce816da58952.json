@@ -1,0 +1,208 @@
+{
+  "questions": [
+    {
+      "question": "Ann Denny's resume highlights experience with both SQL and MongoDB. Considering the projects listed, which statement best describes the likely rationale for choosing one database over the other?",
+      "options": [
+        "SQL (Postgres) was likely chosen for the eCommerce platform due to its superior scalability, while MongoDB was used for the ERP system because of its flexible schema for handling diverse task management data.",
+        "MongoDB was likely used for the eCommerce platform due to its ease of integration with React.js, while SQL (Postgres) was preferred for the ERP system because of its ACID properties for transactional data integrity.",
+        "SQL (Postgres) was likely used for the eCommerce platform due to its relational structure for managing product catalogs and orders, while MongoDB was used for the ERP system to accommodate evolving task assignment workflows with less rigid schemas.",
+        "Both projects likely used SQL (Postgres) primarily, and MongoDB was used for specific components within each project requiring high-volume, unstructured data storage, such as user activity logs."
+      ],
+      "correct_answer": "SQL (Postgres) was likely used for the eCommerce platform due to its relational structure for managing product catalogs and orders, while MongoDB was used for the ERP system to accommodate evolving task assignment workflows with less rigid schemas."
+    },
+    {
+      "question": "Ann Denny's objective statement emphasizes \"innovative solutions\" and contributing to the \"success of the company.\" Given the technologies and projects listed in her resume, which contribution would best exemplify these aspirations in a new Java Developer role?",
+      "options": [
+        "Rapidly refactoring existing legacy code using familiar Spring Boot patterns to improve maintainability and reduce technical debt.",
+        "Developing a robust API using Spring Boot to integrate a new machine learning model for personalized product recommendations in an eCommerce platform.",
+        "Implementing comprehensive unit tests across existing codebases to improve code coverage and ensure stability during future deployments.",
+        "Enhancing the UI of an existing web application using React.js to improve user experience and increase overall user engagement metrics."
+      ],
+      "correct_answer": "Developing a robust API using Spring Boot to integrate a new machine learning model for personalized product recommendations in an eCommerce platform."
+    },
+    {
+      "question": "Ann Denny gained experience at both QB Tech Solutions and Right Soft Options. Based on the resume's description, what is the most significant difference between the projects she worked on at each company in terms of scope and responsibility?",
+      "options": [
+        "At QB Tech Solutions, she worked on backend development tasks, while at Right Soft Options, she primarily focused on frontend UI design and development.",
+        "At QB Tech Solutions, she contributed to large-scale projects (ERP and eCommerce) as part of a team, while at Right Soft Options, she independently developed a Cab Booking System, taking ownership of the entire project lifecycle.",
+        "At QB Tech Solutions, she focused on using Spring Boot and database management, while at Right Soft Options, she specialized in React.js and user authentication.",
+        "At QB Tech Solutions, she gained exposure to system architecture, while at Right Soft Options, her responsibilities were limited to coding and testing individual components."
+      ],
+      "correct_answer": "At QB Tech Solutions, she contributed to large-scale projects (ERP and eCommerce) as part of a team, while at Right Soft Options, she independently developed a Cab Booking System, taking ownership of the entire project lifecycle."
+    },
+    {
+      "question": "Ann Denny lists \"API Creation and Testing\" as a skill. Considering the eCommerce project, which of the following scenarios would best demonstrate her API creation and testing abilities?",
+      "options": [
+        "Designing and implementing a RESTful API endpoint for retrieving product details by ID, including comprehensive unit tests to validate request parameters and response formats.",
+        "Creating a user interface component in React.js to display product search results fetched from an external API.",
+        "Writing SQL queries to retrieve product inventory levels and display them on the admin dashboard.",
+        "Configuring the Razorpay payment gateway to handle secure online transactions."
+      ],
+      "correct_answer": "Designing and implementing a RESTful API endpoint for retrieving product details by ID, including comprehensive unit tests to validate request parameters and response formats."
+    },
+    {
+      "question": "Ann Denny's resume mentions \"system architecture\" in the context of her experience at QB Tech Solutions. What specific aspect of system architecture is most likely represented by her contributions to the ERP system project?",
+      "options": [
+        "Designing the user interface layout and navigation for the application using HTML and CSS.",
+        "Implementing the authentication and authorization mechanisms to control user access to different features.",
+        "Defining the overall structure of the application, including the interactions between different modules and components, and the choice of technologies used for each part.",
+        "Writing the SQL queries to retrieve data from the database and display it in the user interface."
+      ],
+      "correct_answer": "Defining the overall structure of the application, including the interactions between different modules and components, and the choice of technologies used for each part."
+    },
+    {
+      "question": "In the \"WorkAssign\" project (ERP), Ann Denny chose React and TypeScript (TSX) for the frontend. What is the primary advantage of using TypeScript over plain JavaScript in this context, considering the scale of an ERP system?",
+      "options": [
+        "TypeScript allows for faster code execution compared to JavaScript.",
+        "TypeScript provides static typing, which helps catch errors during development and improves code maintainability, particularly in large and complex projects like ERP systems.",
+        "TypeScript automatically generates documentation for the project.",
+        "TypeScript is easier to learn than JavaScript."
+      ],
+      "correct_answer": "TypeScript provides static typing, which helps catch errors during development and improves code maintainability, particularly in large and complex projects like ERP systems."
+    },
+    {
+      "question": "Ann Denny integrated Razorpay into the eCommerce platform. At what point in the software development lifecycle would rigorous security testing be MOST crucial regarding the Razorpay integration?",
+      "options": [
+        "Primarily after deployment to production, focusing on penetration testing to identify vulnerabilities.",
+        "Throughout the development process, with a focus on secure coding practices and continuous integration testing, especially concerning data encryption and access control.",
+        "Only during the initial setup and configuration of the Razorpay API keys in the development environment.",
+        "After the user interface is fully functional and before connecting it to the backend."
+      ],
+      "correct_answer": "Throughout the development process, with a focus on secure coding practices and continuous integration testing, especially concerning data encryption and access control."
+    },
+    {
+      "question": "Ann Denny mentions contributing to an ERP system and an eCommerce platform. Which architectural pattern would be most suitable for these applications to promote modularity and scalability?",
+      "options": [
+        "Monolithic architecture",
+        "Microservices architecture",
+        "Client-server architecture",
+        "Layered architecture"
+      ],
+      "correct_answer": "Microservices architecture"
+    },
+    {
+      "question": "Given Ann Denny's skills and project experience, which of the following coding challenges would be most appropriate to assess her capabilities in a Java Developer interview?",
+      "options": [
+        "Implement a sorting algorithm (e.g., bubble sort) in Java.",
+        "Design a RESTful API endpoint using Spring Boot to handle user authentication and authorization, including error handling and security considerations.",
+        "Write a simple HTML form with JavaScript validation.",
+        "Create a basic SQL query to retrieve data from a database table."
+      ],
+      "correct_answer": "Design a RESTful API endpoint using Spring Boot to handle user authentication and authorization, including error handling and security considerations."
+    },
+    {
+      "question": "Ann Denny's resume mentions \"GitHub Operation.\" What specific aspect of Git/GitHub workflow would be MOST relevant in a team-based software development environment, such as her experience at QB Tech Solutions?",
+      "options": [
+        "Writing detailed commit messages following established conventions to facilitate code review and understanding of changes.",
+        "Cloning a repository to a local machine for personal development.",
+        "Creating a personal GitHub profile to showcase individual projects.",
+        "Downloading pre-built software libraries from GitHub."
+      ],
+      "correct_answer": "Writing detailed commit messages following established conventions to facilitate code review and understanding of changes."
+    },
+    {
+      "question": "Ann Denny describes her \"Cab Booking System\" as having \"real-time booking.\" Which of the following technologies would be MOST appropriate to implement this feature and provide immediate updates to users?",
+      "options": [
+        "Batch processing scheduled to run every hour.",
+        "WebSockets for bi-directional communication between the server and clients.",
+        "Traditional HTTP requests with frequent polling.",
+        "Server-Side Rendering (SSR) to update the page content on every request."
+      ],
+      "correct_answer": "WebSockets for bi-directional communication between the server and clients."
+    },
+    {
+      "question": "Ann Denny mentions \"Database Management\" as a skill. In the context of the eCommerce project, what is an example of an important database management task related to product inventory?",
+      "options": [
+        "Creating a visually appealing product catalog layout on the website.",
+        "Implementing a system to automatically update inventory levels when orders are placed or stock is replenished, while preventing race conditions and ensuring data consistency.",
+        "Generating reports on sales performance for different product categories.",
+        "Optimizing the website loading speed by caching frequently accessed product images."
+      ],
+      "correct_answer": "Implementing a system to automatically update inventory levels when orders are placed or stock is replenished, while preventing race conditions and ensuring data consistency."
+    },
+    {
+      "question": "Ann Denny lists representing her college in a Hackathon. Considering her technical skills, which role would she likely be BEST suited for in a Hackathon team focused on building a web application?",
+      "options": [
+        "Project Manager, responsible for delegating tasks and tracking progress.",
+        "Backend Developer, designing and implementing the API and data layer using Java Spring Boot and database technologies.",
+        "UI/UX Designer, creating the user interface and ensuring a positive user experience.",
+        "Tester, writing test cases and performing quality assurance."
+      ],
+      "correct_answer": "Backend Developer, designing and implementing the API and data layer using Java Spring Boot and database technologies."
+    },
+    {
+      "question": "Ann Denny's resume indicates a strong foundation in both frontend (React) and backend (Java Spring Boot) technologies. What is a potential drawback of being a full-stack developer compared to specializing in either frontend or backend development?",
+      "options": [
+        "Full-stack developers are always less proficient than specialists in specific areas.",
+        "Full-stack developers may struggle to keep up with the rapid advancements in both frontend and backend technologies, potentially leading to outdated skills.",
+        "Full-stack developers are always in higher demand and command higher salaries.",
+        "Full-stack developers are limited to working on smaller projects."
+      ],
+      "correct_answer": "Full-stack developers may struggle to keep up with the rapid advancements in both frontend and backend technologies, potentially leading to outdated skills."
+    },
+    {
+      "question": "The WorkAssign project uses React and TypeScript to build a frontend with \"reusable components.\" What is the main benefit of using reusable components in a complex application like an ERP system?",
+      "options": [
+        "Reusable components reduce the overall size of the application's codebase.",
+        "Reusable components promote consistency in the user interface, simplify maintenance, and improve development efficiency by avoiding code duplication.",
+        "Reusable components automatically improve the application's performance.",
+        "Reusable components make it easier to learn React and TypeScript."
+      ],
+      "correct_answer": "Reusable components promote consistency in the user interface, simplify maintenance, and improve development efficiency by avoiding code duplication."
+    },
+    {
+      "question": "Ann Denny lists both Spring Boot and React.js as skills. What is the PRIMARY advantage of using Spring Boot for backend development in conjunction with a React.js frontend?",
+      "options": [
+        "React.js requires Spring Boot to function correctly.",
+        "Spring Boot simplifies the creation of RESTful APIs that React.js can easily consume, allowing for a clean separation of concerns between the frontend and backend.",
+        "Spring Boot automatically optimizes the React.js code for better performance.",
+        "Spring Boot provides built-in UI components that can be directly used in React.js."
+      ],
+      "correct_answer": "Spring Boot simplifies the creation of RESTful APIs that React.js can easily consume, allowing for a clean separation of concerns between the frontend and backend."
+    },
+    {
+      "question": "Considering the skills listed, which project aspect would MOST benefit from Ann Denny's \"Communication Skills\"?",
+      "options": [
+        "Designing the database schema for the eCommerce platform.",
+        "Collaborating with other developers to integrate different modules of the ERP system.",
+        "Writing unit tests for the Spring Boot API.",
+        "Setting up the CI/CD pipeline for the project."
+      ],
+      "correct_answer": "Collaborating with other developers to integrate different modules of the ERP system."
+    },
+    {
+      "question": "Ann Denny's experience at QB Tech Solutions involved contributing to an ERP system. What is the MOST likely role of a \"Super Admin\" within the WorkAssign ERP project based on the context provided?",
+      "options": [
+        "A user with limited access who can only view assigned tasks.",
+        "A user who can manage all aspects of the system, including user roles, permissions, and system settings.",
+        "A user who is responsible for writing the code for the ERP system.",
+        "A user who primarily focuses on data entry and generating reports."
+      ],
+      "correct_answer": "A user who can manage all aspects of the system, including user roles, permissions, and system settings."
+    },
+    {
+      "question": "Ann Denny's resume mentions a \"seamless user experience\" for the cab booking system. Which of the following practices is MOST crucial to achieving a seamless user experience in a web application?",
+      "options": [
+        "Using the latest version of all software libraries and frameworks.",
+        "Optimizing the application's performance to minimize loading times and ensure responsiveness.",
+        "Writing comprehensive documentation for the application's code.",
+        "Implementing complex algorithms to provide advanced features."
+      ],
+      "correct_answer": "Optimizing the application's performance to minimize loading times and ensure responsiveness."
+    },
+    {
+      "question": "Ann Denny's resume lists achievements including being a Vice Chairman of the IEEE Student council and Vice Captain of a team. What does this suggest about her capabilities beyond her technical skills?",
+      "options": [
+        "She is likely to be an introvert who prefers working independently.",
+        "She likely has good leadership skills, teamwork abilities, and organizational skills.",
+        "She is likely to be primarily focused on academic achievements.",
+        "She is likely to be a poor communicator."
+      ],
+      "correct_answer": "She likely has good leadership skills, teamwork abilities, and organizational skills."
+    }
+  ],
+  "original_input_text": "ANN DENNY\n+918330847163\nanndenny18@gmail.com\nJava Developer\nhttps://www.linkedin.com/in/ann-denny\nEDUCATION PROFILE\nTo obtain a software development role where I can utilize my\nBachelor of Engineering programming skills, problem-solving ability, and passion for\ntechnology to build innovative solutions and contribute to the\nComputer Science and\nsuccess of the company.\nEngineering - 7.3 cgpa\nWORK EXPERIENCE\n2019 - 2023\n2024 – 2025\nJunior Software Developer\nWorked for one year at QB Tech Solutions, gaining hands-on experience in Java\n12 State Board\nsoftware development.\nSacred Heart -83% Contributed to two major projects: an ERP system and an eCommerce platform.\nEnhanced skills in backend development, database management, and system\n2018 - 2019\narchitecture.\nJava Intern 2023 - 2024\n10 State Board\nDeveloped and managed a Cab Booking System at Right Soft Options\nusing HTML, CSS, Java, React, and MySQL for a seamless user experience.\nSacred Heart - 93%\nImplemented real-time booking, optimized database management for ride\n2016-2017 allocation, and enhanced security with user authentication.\nDesigned an intuitive UI and backend architecture to streamline ride\nscheduling, fare calculation, and driver management.\nSKILLS\nPROJECTS\nEcommerce\nAPI Creation and Testing\nDeveloped an eCommerce platform with three user roles: Admin, Supplier, and\nSpring Boot\nCustomer.\nHosting\nBuilt the backend using Java Spring Boot, ensuring secure authentication and\nReact.js smooth data processing.\nIntegrated Razorpay for online payments, enabling seamless transaction\nSQL in Postgres and\nhandling.\nMongoDb\nImplemented features like product management, order tracking, and inventory\nCommunication Skills handling for suppliers.\nErp\nGitHub Operation\nDeveloped the WorkAssign project with three user roles: Super Admin, Admin, and\nRasorpay Employee.\nBuilt the frontend using React and TypeScript (TSX) to ensure a dynamic and\nresponsive UI.\nLANGUAGE Implemented role-based access, task management, and real-time updates for\nefficient work assignment.\nDesigned reusable components and optimized performance, enhancing my skills\nEnglish\nin React, TypeScript, and enterprise frontend development.\nHindi ACIEVEMENTS\nMalayalam Represented my college in a H 1.5 Hackathon event organised by Rajagiri college.\nVice chairman of IEEE Student council at Christ College of Engineering .\nVice captain of Pegasus team of Christ College of Engineering.\n",
+  "difficulty": "hard",
+  "num_questions": 20,
+  "generated_at": 1764674718.8524086
+}

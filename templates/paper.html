@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question Paper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .paper-container { max-width: 900px; margin: 24px auto; background: var(--card); padding: 24px; border-radius: 12px; }
+        .paper-actions { display: flex; gap: 12px; margin-bottom: 16px; }
+        .paper pre { white-space: pre-wrap; word-wrap: break-word; font-family: inherit; line-height: 1.6; }
+    </style>
+    </head>
+<body>
+    <header class="header">
+        <h1>Question Paper</h1>
+        <div class="header-actions">
+            <a href="{{ url_for('home') }}" class="home-btn">
+                <i class="fas fa-home"></i>
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="chat-bubble">
+        <a href="{{ url_for('chat') }}" title="Ask AI Tutor"><i class="fas fa-comments"></i></a>
+    </div>
+
+    <div class="container">
+        <div class="paper-container">
+            <div class="paper-actions">
+                <button class="action-button" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print / Save as PDF
+                </button>
+                <a href="{{ url_for('download_paper_docx') }}" class="action-button">
+                    <i class="fas fa-file-word"></i> Download as Word
+                </a>
+                {% if has_answer_key %}
+                <a href="{{ url_for('download_answer_key_docx') }}" class="action-button">
+                    <i class="fas fa-key"></i> Download Answer Key
+                </a>
+                {% endif %}
+                <a href="{{ url_for('index') }}" class="action-button">
+                    <i class="fas fa-redo"></i> Create Another
+                </a>
+            </div>
+
+            <div class="paper">
+                <pre>{{ paper_text }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-toggle i');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+        }
+    </script>
+</body>
+</html>
+
+

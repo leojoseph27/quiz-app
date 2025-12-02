@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCQ Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Quiz Generator</h1>
+        <div class="header-actions">
+            <a href="{{ url_for('index') }}" class="home-btn">
+                <i class="fas fa-home"></i>
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="chat-bubble">
+        <a href="{{ url_for('chat') }}" title="Ask AI Tutor"><i class="fas fa-comments"></i></a>
+    </div>
+
+    <div class="container">
+        <div class="quiz-generator">
+            <h2 style="text-align:center; margin-bottom: 0.5rem;">AI Quiz & Paper Builder</h2>
+            <p style="text-align:center; opacity:0.8; margin-bottom: 1.5rem;">Enter a topic or upload a document to generate MCQs or a formatted question paper.</p>
+            <form id="mainForm" action="{{ url_for('generate') }}" method="post" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+                <div class="input-group">
+                    <div class="input-container">
+                        <input type="text" name="topic" placeholder="Enter topic📝  OR  Upload file📂">
+                        <div class="input-helper"></div>
+                    </div>
+                    <div class="upload-container">
+                        <input type="file" id="file" name="file" accept=".pdf,.txt,.docx" onchange="updateFileName(this)">
+                        <label for="file" class="upload-btn">
+                            <i class="fas fa-upload"></i>
+                            Upload File
+                        </label>
+                        <div class="file-name-container" style="display: none;">
+                            <span class="file-name"></span>
+                            <button type="button" class="remove-file" onclick="removeFile()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="num_questions">Number of Questions:</label>
+                    <input type="number" id="num_questions" name="num_questions" min="1" max="20" value="5" required>
+                </div>
+
+                <div class="difficulty-selector">
+                    <button type="button" class="difficulty-btn active" data-difficulty="easy">Easy</button>
+                    <button type="button" class="difficulty-btn" data-difficulty="intermediate">Intermediate</button>
+                    <button type="button" class="difficulty-btn" data-difficulty="hard">Hard</button>
+                    <input type="hidden" name="difficulty" value="easy">
+                </div>
+
+                <div class="input-group button-row">
+                    <button type="submit" class="submit-btn toggle-btn active-toggle" id="generateQuizBtn" onclick="setQuizMode()">
+                        <i class="fas fa-magic"></i> Generate Quiz
+                    </button>
+                    <button type="button" class="submit-btn toggle-btn" id="createPaperBtn" onclick="togglePaperMode()">
+                        <i class="fas fa-file-alt"></i> Create Question Paper
+                    </button>
+                </div>
+
+                <input type="hidden" id="formMode" name="form_mode" value="quiz">
+
+                <div id="paperCounts" class="form-group" style="display: none; margin-top: 12px;">
+                    <label>Question counts for paper:</label>
+                    <div class="input-group" style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+                        <div class="mark-row">
+                            <label for="count_2">2 Mark</label>
+                            <input id="count_2" type="number" min="0" max="50" value="0" name="count_2" placeholder="e.g., 5">
+                        </div>
+                        <div class="mark-row">
+                            <label for="count_3">3 Mark</label>
+                            <input id="count_3" type="number" min="0" max="50" value="0" name="count_3" placeholder="e.g., 4">
+                        </div>
+                    </div>
+                    <div class="input-group" style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+                        <div class="mark-row">
+                            <label for="count_5">5 Mark</label>
+                            <input id="count_5" type="number" min="0" max="50" value="0" name="count_5" placeholder="e.g., 3">
+                        </div>
+                        <div class="mark-row">
+                            <label for="count_10">10 Mark</label>
+                            <input id="count_10" type="number" min="0" max="50" value="0" name="count_10" placeholder="e.g., 2">
+                        </div>
+                    </div>
+                    <div class="input-group" style="justify-content: flex-end;">
+                        <button type="submit" class="submit-btn" onclick="setPaperModeAndSubmit()">
+                            <i class="fas fa-magic"></i> Generate Question Paper
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-toggle i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+        }
+
+        
+        const difficultyBtns = document.querySelectorAll('.difficulty-btn');
+        const difficultyInput = document.querySelector('input[name="difficulty"]');
+
+        difficultyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                difficultyBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                difficultyInput.value = btn.dataset.difficulty;
+            });
+        });
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const fileInput = document.getElementById('file');
+            const topicInput = document.querySelector('input[name="topic"]');
+            const numQuestions = document.getElementById('num_questions').value;
+            const mode = document.getElementById('formMode').value;
+            
+            
+            if (!fileInput.files.length && !topicInput.value.trim()) {
+                showNotification('Enter topic or upload a document', 'error');
+                return;
+            }
+            
+            if (mode === 'quiz') {
+                if (!numQuestions || numQuestions < 1) {
+                    showNotification('Please enter a valid number of questions', 'error');
+                    return;
+                }
+                showNotification('Generating Quiz...', 'info');
+                event.target.action = "{{ url_for('generate') }}";
+                event.target.submit();
+                return;
+            }
+
+            if (mode === 'paper') {
+                const c2 = parseInt(document.querySelector('input[name="count_2"]').value || '0', 10);
+                const c3 = parseInt(document.querySelector('input[name="count_3"]').value || '0', 10);
+                const c5 = parseInt(document.querySelector('input[name="count_5"]').value || '0', 10);
+                const c10 = parseInt(document.querySelector('input[name="count_10"]').value || '0', 10);
+                if ((c2 + c3 + c5 + c10) <= 0) {
+                    showNotification('Enter at least one question count for the paper', 'error');
+                    return;
+                }
+                showNotification('Generating Question Paper...', 'info');
+                
+                // Map inputs to expected field names for /generate_paper
+                // Duplicate values as needed via hidden inputs at submit time
+                const form = document.getElementById('mainForm');
+                form.action = "{{ url_for('generate_paper') }}";
+                // Ensure backend receives expected field names
+                const ensureHidden = (name, val) => {
+                    let el = form.querySelector(`input[name="${name}"]`);
+                    if (!el) { el = document.createElement('input'); el.type = 'hidden'; el.name = name; form.appendChild(el); }
+                    el.value = val;
+                };
+                ensureHidden('topic_paper', topicInput.value);
+                ensureHidden('count_2', c2);
+                ensureHidden('count_3', c3);
+                ensureHidden('count_5', c5);
+                ensureHidden('count_10', c10);
+                const filePaper = document.getElementById('file');
+                if (filePaper && filePaper.files.length) {
+                    // rename input name for backend to read file_paper
+                    filePaper.setAttribute('name', 'file_paper');
+                }
+                event.target.submit();
+                return;
+            }
+            
+            showNotification('Please choose an action', 'error');
+        }
+
+        function showNotification(message, type = 'info') {
+            
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notification => notification.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        
+        function updateFileName(input) {
+            const fileName = input.files[0]?.name;
+            if (fileName) {
+                const fileContainer = document.querySelector('.file-name-container');
+                const fileNameSpan = document.querySelector('.file-name');
+                const uploadBtn = input.nextElementSibling;
+                
+                
+                fileContainer.style.display = 'flex';
+                
+                
+                fileNameSpan.textContent = fileName;
+                
+                
+                uploadBtn.innerHTML = `<i class="fas fa-file"></i> ${fileName}`;
+                showNotification('File uploaded successfully', 'success');
+            }
+        }
+
+        function removeFile() {
+            const fileInput = document.getElementById('file');
+            const fileContainer = document.querySelector('.file-name-container');
+            const uploadBtn = fileInput.nextElementSibling;
+            
+            
+            fileInput.value = '';
+            
+            
+            fileContainer.style.display = 'none';
+            
+            
+            uploadBtn.innerHTML = '<i class="fas fa-upload"></i> Upload File';
+            
+            showNotification('File removed', 'info');
+        }
+
+        function setQuizMode() {
+            document.getElementById('formMode').value = 'quiz';
+            document.getElementById('paperCounts').style.display = 'none';
+            const form = document.getElementById('mainForm');
+            form.action = "{{ url_for('generate') }}";
+            document.getElementById('generateQuizBtn').classList.add('active-toggle');
+            document.getElementById('createPaperBtn').classList.remove('active-toggle');
+        }
+
+        function togglePaperMode() {
+            const form = document.getElementById('mainForm');
+            document.getElementById('formMode').value = 'paper';
+            document.getElementById('paperCounts').style.display = 'block';
+            form.action = "{{ url_for('generate_paper') }}";
+            document.getElementById('generateQuizBtn').classList.remove('active-toggle');
+            document.getElementById('createPaperBtn').classList.add('active-toggle');
+        }
+
+        function setPaperModeAndSubmit() {
+            document.getElementById('formMode').value = 'paper';
+        }
+
+        function togglePaperForm() {
+            const form = document.getElementById('paperForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function updatePaperFileName(input) {
+            const fileName = input.files[0]?.name;
+            if (fileName) {
+                const fileContainer = document.querySelector('.file-name-container-paper');
+                const fileNameSpan = fileContainer.querySelector('.file-name');
+                const uploadBtn = input.nextElementSibling;
+                fileContainer.style.display = 'flex';
+                fileNameSpan.textContent = fileName;
+                uploadBtn.innerHTML = `<i class=\"fas fa-file\"></i> ${fileName}`;
+                showNotification('File uploaded successfully', 'success');
+            }
+        }
+
+        function removePaperFile() {
+            const fileInput = document.getElementById('file_paper');
+            const fileContainer = document.querySelector('.file-name-container-paper');
+            const uploadBtn = fileInput.nextElementSibling;
+            fileInput.value = '';
+            fileContainer.style.display = 'none';
+            uploadBtn.innerHTML = '<i class="fas fa-upload"></i> Upload File';
+            showNotification('File removed', 'info');
+        }
+
+        function handlePaperSubmit(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('file_paper');
+            const topicInput = document.querySelector('input[name="topic_paper"]');
+            const c2 = parseInt(document.querySelector('input[name="count_2"]').value || '0', 10);
+            const c3 = parseInt(document.querySelector('input[name="count_3"]').value || '0', 10);
+            const c5 = parseInt(document.querySelector('input[name="count_5"]').value || '0', 10);
+            const c10 = parseInt(document.querySelector('input[name="count_10"]').value || '0', 10);
+
+            if (!fileInput.files.length && !topicInput.value.trim()) {
+                showNotification('Enter Input to Create Question Paper', 'error');
+                return;
+            }
+
+            if ((c2 + c3 + c5 + c10) <= 0) {
+                showNotification('Enter at least one question count', 'error');
+                return;
+            }
+
+            showNotification('Generating Question Paper...', 'info');
+            event.target.submit();
+        }
+    </script>
+</body>
+</html>
+
