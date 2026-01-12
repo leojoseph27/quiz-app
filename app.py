@@ -19,7 +19,7 @@ if not GOOGLE_API_KEY:
     raise ValueError("GOOGLE_API_KEY not found in environment variables")
 
 genai.configure(api_key=GOOGLE_API_KEY)
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
